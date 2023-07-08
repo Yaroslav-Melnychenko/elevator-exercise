@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+  background-color: #FBFFDC;
+  border: solid 3px #A4907C;
+  border-radius: 6px;
+  padding: 15px;
+  .floors {
+    .floor {
+      height: 70px;
+      border-bottom: dotted 1px #A4907C;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .elevators {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 0 25px 0 155px;
+  }
+}
