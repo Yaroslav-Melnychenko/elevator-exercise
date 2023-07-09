@@ -67,24 +67,12 @@ const Building: React.FC<Props> = ({ floorsNumber, elevatorsNumber }) => {
   }, [floorsQueue, busyElevatorsIds.length, elevators.length, callElevator]);
 
   return (
-    <div className={styles.container} style={{ width: (elevators.length) * 100 + 120 }}>
+    <div className={styles.container} style={{ width: (elevators.length) * 100 + 150 }}>
       <div className={styles.floors}>
         {[...Array(floorsNumber)].map((_, index, floorsArray) => {
-          if (floorsArray.length - 1 === index) {
-            return (
-              <div key={index} className={styles.elevators}>
-                {elevators.map((elevator, index) => (
-                  <div key={index} className={styles.elevatorItem}>
-                    <Elevator floor={elevator.floor} />
-                  </div>
-                ))}
-              </div>
-            )
-          }
-
           const floorNumber = floorsArray.length - 1 - index;
           return (
-            <div key={index} className={styles.floor}>
+            <div key={index} className={styles.floor} data-testid="floor">
               <FloorActions
                 key={index}
                 disabled={Boolean(
@@ -104,6 +92,15 @@ const Building: React.FC<Props> = ({ floorsNumber, elevatorsNumber }) => {
                   }
                 }}
               />
+              {floorsArray.length - 1 === index && (
+                <div className={styles.elevators}>
+                  {elevators.map((elevator, index) => (
+                    <div key={index} className={styles.elevatorItem} data-testid="elevator">
+                      <Elevator floor={elevator.floor} />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )
         })}

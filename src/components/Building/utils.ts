@@ -6,7 +6,7 @@ export interface ElevatorInterface {
 export const getInitialElevatorsState = (count: number): ElevatorInterface[] => [...Array(count)]
   .map((_, index) => ({
     id: index  + 1,
-    floor: 1
+    floor: 0
   }));
 
 // We are checking the distance:
