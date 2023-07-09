@@ -6,6 +6,7 @@ import {
   getClosestElevatorId
 } from './utils';
 import FloorActions from '../FloorActions/FloorActions';
+import elevatorPingUrl from '../../assets/audios/elevator_ping.mp3';
 import styles from './Building.module.scss';
 
 interface Props {
@@ -33,6 +34,7 @@ const Building: React.FC<Props> = ({ floorsNumber, elevatorsNumber }) => {
         newBusyElevatorsArray.splice(index, 1);
         return newBusyElevatorsArray;
       });
+      new Audio(elevatorPingUrl).play();
     }, 5000);
   }
 
